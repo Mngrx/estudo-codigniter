@@ -1,0 +1,1 @@
+<?= "<h2>Você obteve sucesso ao se cadastrar</h2>" ?>

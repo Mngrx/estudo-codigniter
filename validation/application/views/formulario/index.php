@@ -9,7 +9,7 @@
 </style>
 
 <?= validation_errors() ?>
-<?= form_open('formulario/cadastro') ?>
+<?= form_open('formulario/index') ?>
 
 <table>
     <tr>
@@ -39,9 +39,11 @@
     <tr><td><label for="sexo">Sexo:</label></td></tr>
 </table>
     
-    <input type="radio" name="sexo" value="masculino" class="radio"> Masculino <br/>
-    <input type="radio" name="sexo" value="feminino" class="radio"> Feminino <br/>
-    <input type="radio" name="sexo" value="outro" class="radio"> Outro <br/>
+<input type="radio" name="sexo" value="masculino" class="radio"> Masculino <br/>
+<input type="radio" name="sexo" value="feminino" class="radio"> Feminino <br/>
+<input type="radio" name="sexo" value="outro" class="radio"> Outro <br/>
+
+<input type="submit" value="Enviar">
 
 
 <?= form_close() ?>
