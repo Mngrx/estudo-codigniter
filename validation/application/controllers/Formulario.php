@@ -17,16 +17,18 @@ class Formulario extends CI_Controller {
         $this->load->library('form_validation');
 
         
-        if ($this->form_validation->run('validarFormulario') === FALSE) {
+        if ($this->form_validation->run() === FALSE) {
             
             $this->load->view('template/header');
             $this->load->view('formulario/index');
             $this->load->view('template/footer');
 
         } else {
+
             $this->load->view('template/header');
             $this->load->view('formulario/sucesso');
             $this->load->view('template/footer');
+            
         }
 
         
