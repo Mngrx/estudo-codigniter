@@ -1,0 +1,9 @@
+CREATE TABLE products (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  nome varchar(200) NOT NULL,
+  descricao text NOT NULL,
+  preco decimal(10, 2) NOT NULL,
+  criado timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY(id)
+);
+
