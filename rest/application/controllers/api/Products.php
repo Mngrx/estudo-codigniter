@@ -28,7 +28,7 @@ class Products extends REST_controller {
         }
 
         if (!empty($products)) {
-            $response['data'] = $products;
+            $response = $products;
             $this->response($response, REST_Controller::HTTP_OK);
         } else {
             $this->response($response, REST_Controller::HTTP_NO_CONTENT);
@@ -53,7 +53,7 @@ class Products extends REST_controller {
         }
 
         if ($response['status']) {
-            $this->response($response, REST_Controller::HTTP_OK);
+            $this->response($response, REST_Controller::HTTP_CREATED);
         } else {
             $this->response($response, REST_Controller::HTTP_BAD_REQUEST);
         }
@@ -83,9 +83,19 @@ class Products extends REST_controller {
         } else {
             $this->response($response, REST_Controller::HTTP_BAD_REQUEST);
         }
+    }
 
+    public function index_delete() {
+        //Pega o id pela URL
+        $id = $this->uri->segment(3);
 
+        $response = $this->Pmodel->removeProduct($id);
 
+        if ($response['status']) {
+            $this->response($response, REST_Controller::HTTP_OK);
+        } else {
+            $this->response($response, REST_Controller::HTTP_BAD_REQUEST);
+        }
     }
 
 

@@ -67,3 +67,5 @@ $route["api/products/(:id)"]["get"] = 'api/products';
 $route["api/products"]["post"] = "api/products";
 
 $route["api/products/(:id)"]["put"] = 'api/products';
+
+$route["api/products/(:id)"]["delete"] = 'api/products';

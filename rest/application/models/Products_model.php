@@ -15,7 +15,7 @@ class Products_model extends CI_model {
     public function getAll($params = null) {
         $this->db->select($fields)
         ->from('products')
-        ->order_by('nome','ASC');
+        ->order_by('id','ASC');
 
         return $this->db->get()->result_array();
     }
@@ -46,6 +46,12 @@ class Products_model extends CI_model {
         return $response;
     }
 
+    /*
+        Faz atualização dos campos de produto.       
+        Os dados vêm validados do controller.
+
+    */
+
     public function updateProduct($product, $params = 'id', $values) {
 
         $this->db->where($params, $values);
@@ -57,6 +63,27 @@ class Products_model extends CI_model {
         } else {
             $response['status'] = FALSE;
             $response['message'] = $this->db->error_message();
+        }
+
+        return $response;
+    }
+
+    /*
+        Vê se um 'id' existe no bd, caso exista, remove, caso não retorna erro
+        Ajudado por: https://stackoverflow.com/questions/16125524/how-to-check-if-id-already-exists-codeigniter
+    */
+
+    public function removeProduct($id) {
+        
+        $status = $this->db->get_where('products', array('id' => $id))->num_rows();
+
+        if ($status) {
+            $this->db->delete('products', array('id'=>$id));
+            $response['status'] = TRUE;
+            $response['message'] = "Produto removido com sucesso.";
+        } else {
+            $response['status'] = FALSE;
+            $response['message'] = "Produto não existe no sistema.";
         }
 
         return $response;
